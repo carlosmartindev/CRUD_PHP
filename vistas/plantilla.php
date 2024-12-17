@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,5 +21,9 @@
 </head>
 <body>
 	<h1 class="h1_principal">Administrador de tareas</h1>
+	<?php
+		require_once("modelos/db.php");
+	?>
+
 </body>
 </html>
