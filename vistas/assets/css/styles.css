@@ -1,0 +1,74 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* General */
+body {
+	background: #f3f4f6;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.h1_principal {
+	text-align: center;
+	padding: 1rem 0;
+	color: cadetblue;
+}
+
+/* Página 404 */
+#contenedor_404 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.header {
+	color: cadetblue;
+	font-size: 15rem;
+	text-align: center;
+}
+
+.subheader {
+	color: cadetblue;
+	font-weight: bold;
+	font-size: 2.5rem;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+article {
+	width: 80%;
+	color: cadetblue;
+	text-align: center;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.btn {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color: #599bb3;
+	border-radius: 8px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: .6rem;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #3d768a;
+}
+
+.btn:hover {
+	background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color: #408c99;
+}
+
+.myButton:active {
+	position: relative;
+	top: 1px;
+}

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,6 +10,13 @@ session_start();
 
 	<!-- CSS -->
 	<link href="vistas/assets/css/styles.css" rel="stylesheet" />
+	<?php
+		if(isset($_GET["ruta"]) && file_exists('vistas/assets/css/'.$_GET["ruta"].'_styles.css')){
+			echo '<link href="vistas/assets/css/'.$_GET["ruta"].'_styles.css" rel="stylesheet" />';
+		} elseif (!isset($_GET["ruta"])) {
+			echo '<link href="vistas/assets/css/index_styles.css" rel="stylesheet" />';
+		}
+	?>
 
 	<!-- JS -->
 	<script src="https://kit.fontawesome.com/83819efe74.js" crossorigin="anonymous"></script>
@@ -23,6 +26,15 @@ session_start();
 	<h1 class="h1_principal">Administrador de tareas</h1>
 	<?php
 		require_once("modelos/db.php");
+
+		if(isset($_GET["ruta"])){
+			if (file_exists(__DIR__."/modulos/".$_GET["ruta"].".php"))
+				include "modulos/".$_GET["ruta"].".php";
+			else
+				include "modulos/404.php";
+		} else {
+			include "modulos/index.php";
+		}
 	?>
 
 </body>
