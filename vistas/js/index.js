@@ -78,6 +78,37 @@ const Sistema = {
 						console.log('Ocurrió un error al guardar la tarea. Error:', errorThrown);
 					}
 				});
+			},
+
+			// Método para eliminar una tarea
+			eliminarTarea: function(id) {
+				var datos = new FormData();
+				datos.append("eliminarTarea", 1);
+				// Se envía la variable con el id a eliminar
+				datos.append("id", id);
+
+				$.ajax({
+					url:"ajax/index.ajax.php",
+					method: "POST",
+					data: datos,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "json",
+					success: function(respuesta){
+						respuesta = JSON.parse(respuesta);
+						if (respuesta.status === 'failed') {
+							alert("Error al eliminar. Vuelva a intentar");
+							console.log('Error al eliminar la tarea. Error:', respuesta.query);
+							return;
+						}
+
+						alert("Tarea eliminada correctamente");
+						_.Metodos.listarTareas();
+					},error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log('Ocurrió un error al eliminar la tarea. Error:', errorThrown);
+					}
+				});
 			}
 		},
 		Eventos: function () {
@@ -122,6 +153,16 @@ const Sistema = {
 
 				$("#idEditar").val(id);
 				$("#formEdit").submit();
+			});
+
+			$("#formEdit").delegate(".btnEliminar", "click", function(e) {
+				e.preventDefault();
+				const id = $(this).data('id');
+
+				const confirmacion = confirm(`Está seguro de eliminar la tarea ${id}?`);
+				if (confirmacion) {
+					_.Metodos.eliminarTarea(id);
+				}
 			});
 		}
 	}

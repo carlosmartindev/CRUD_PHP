@@ -36,6 +36,14 @@ class AjaxTareas{
 		// Se regresa la respuesta en formato JSON
 		echo json_encode($respuesta);
 	}
+
+	// Método para eliminar tareas
+	public function ajaxEliminarTarea() {
+		// Se llama el controlador
+		$respuesta = ControladorTareas::ctrEliminarTarea();
+		// Se regresa la respuesta en formato JSON
+		echo json_encode($respuesta);
+	}
 }
 
 // Valido si se está enviando la variable "listarTareas"
@@ -64,4 +72,11 @@ if(isset($_POST["actualizarTarea"])){
 	// Si existe se hace el llamado al método "ajaxActualizarTarea"
 	$tareas = new AjaxTareas();
 	$tareas -> ajaxActualizarTarea();
+}
+
+// Valido si se está enviando la variable "agregarTarea"
+if(isset($_POST["eliminarTarea"])){
+	// Si existe se hace el llamado al método "ajaxEliminarTarea"
+	$tareas = new AjaxTareas();
+	$tareas -> ajaxEliminarTarea();
 }

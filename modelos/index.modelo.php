@@ -53,4 +53,20 @@ class ModeloTareas{
 			return json_encode(array('status' => 'failed', 'query' => $sql));
 		}
 	}
+
+	static public function mdlEliminarTarea($datos) {
+		// Recupero la variable con el texto a guardar
+		$id = $datos['id'];
+
+		$sql = "DELETE FROM tasks WHERE id = :id";
+		$stmt = DB::conectar()->prepare($sql);
+
+		$stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return json_encode(array('status' => 'ok'));
+		} else {
+			return json_encode(array('status' => 'failed', 'query' => $sql));
+		}
+	}
 }

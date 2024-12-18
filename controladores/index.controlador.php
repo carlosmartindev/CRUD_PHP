@@ -34,4 +34,13 @@ class ControladorTareas{
 		// Se retorna la respuesta
 		return $respuesta;
 	}
+
+	static public function ctrEliminarTarea() {
+		// Se obtiene la variabe con el id a eliminar
+		$datos = array('id' => $_POST['id']);
+		// Se llama el modelo y se envía la variable
+		$respuesta = ModeloTareas::mdlEliminarTarea($datos);
+		// Se retorna la respuesta
+		return $respuesta;
+	}
 }
