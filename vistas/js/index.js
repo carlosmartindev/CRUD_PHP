@@ -33,7 +33,7 @@ const Sistema = {
 									<p><strong>${element.task_name}</strong></p>
 									<p>Creado en: ${element.created_at}</p>
 								</div>
-								<div>
+								<div class="btns_group">
 									<a href="#" class="btnLista btnEditar" data-id="${element.id}"><i class="fa fa-pencil"></i> Editar</a>
 									<a href="#" class="btnLista btnEliminar" data-id="${element.id}"><i class="fa fa-trash"></i> Eliminar</a>
 								</div>
@@ -78,7 +78,7 @@ const Sistema = {
 						console.log('Ocurrió un error al guardar la tarea. Error:', errorThrown);
 					}
 				});
-			},
+			}
 		},
 		Eventos: function () {
 			$("#btn_nt").click(function(e) {
@@ -97,6 +97,13 @@ const Sistema = {
 				}
 			});
 
+			$(".btnEditar").click(function(e) {
+				e.preventDefault();
+				const id = $(this).data('id');
+				$("#idEditar").val(id);
+				$("#formEdit").submit();
+			});
+
 			$("#btn_guardar").click(function(e) {
 				e.preventDefault();
 				const tarea = $("#desc_tarea").val();
@@ -107,6 +114,14 @@ const Sistema = {
 				}
 
 				_.Metodos.agregarTarea(tarea);
+			});
+
+			$("#formEdit").delegate(".btnEditar", "click", function(e) {
+				e.preventDefault();
+				const id = $(this).data('id');
+
+				$("#idEditar").val(id);
+				$("#formEdit").submit();
 			});
 		}
 	}

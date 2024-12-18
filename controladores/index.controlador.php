@@ -16,4 +16,22 @@ class ControladorTareas{
 		// Se retorna la respuesta
 		return $respuesta;
 	}
+
+	static public function ctrCargarTarea() {
+		// Se obtiene la variabe con el id a cargar
+		$datos = array('id' => $_POST['id']);
+		// Se llama el modelo y se envía la variable
+		$respuesta = ModeloTareas::mdlCargarTarea($datos);
+		// Se retorna la respuesta
+		return $respuesta;
+	}
+
+	static public function ctrActualizarTarea() {
+		// Se obtiene la variabe con el id a cargar
+		$datos = array('id' => $_POST['id'], 'tarea' => $_POST['tarea']);
+		// Se llama el modelo y se envía la variable
+		$respuesta = ModeloTareas::mdlActualizarTarea($datos);
+		// Se retorna la respuesta
+		return $respuesta;
+	}
 }

@@ -54,9 +54,14 @@ li:not(:last-child) {
 		margin-bottom: 1rem;
 	}
 
+	.btns_group {
+		display: grid;
+	}
+
 	.btnLista {
 		width: 100%;
 		box-sizing: border-box;
+		text-align: center;
 	}
 
 	.btnEditar {
